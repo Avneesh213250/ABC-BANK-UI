@@ -1,0 +1,106 @@
+<p class="fa fa-bold" style="margin-left: 450px; font-size: large;">Create Sales Entry</p>
+<div class="row">
+    <div class="col-xs-7">
+        <form  (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="customername">Customer Name</label>
+               <select type="text" class="form-control" name="customername" id="customername" ngModel 
+               #customername="ngModel" required >  
+               <option value="">Selcet Customer</option>
+        <option value="Customer 1">Customer 1</option>
+        <option value="Customer 2">Customer 2</option>
+        <option value="Customer 3">Customer 3</option>
+        <option value="Customer 4">Customer 4</option>
+               </select>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="!customername.valid&& customername.touched" class="help-block">Please enter customername!</span>
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="salestype">Sales Type</label>
+                   <select type="text" class="form-control" name="salestype" id="salestype" ngModel 
+                   #salestype="ngModel" required [(ngModel)]="sales_typetest">  
+                   <option value="">Selcet Type</option>
+        <option value="Insurence">Insurance</option>
+        <option value="CreditCard">CreditCard</option>
+               </select>
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="!salestype.valid&& salestype.touched" class="help-block">Please enter sales_type!</span>
+            <div class="row" *ngIf="sales_typetest==='CreditCard'">
+                <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="creditCardNum">Credit Card Number</label>
+                   <input type="number" class="form-control" name="creditCardNum" minlength="16" id="creditCardNum" ngModel 
+                   #creditCardNum="ngModel" required >  
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="!creditCardNum.valid&& creditCardNum.touched&& creditCardNum.value<16" class="help-block">Please enter valid Credit Card!</span>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="validity">Validity</label>
+                   <input type="date" class="form-control" name="validity" id="validity" ngModel 
+                   #validity="ngModel" required >  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span *ngIf="!validity.valid&& validity.touched" class="help-block">Please enter validity!</span>
+        </div>
+
+            <div class="row" *ngIf="sales_typetest==='Insurence'">
+                <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="insurence">Insurance</label>
+                   <input type="text" class="form-control" name="insurence" id="insurence" ngModel 
+                   #insurence="ngModel" required > 
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="!insurence.valid&& insurence.touched" class="help-block">Please enter insurence!</span>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="policy">Policy</label>
+                   <input type="text" class="form-control" name="policy" id="policy" ngModel 
+                   #policy="ngModel" required >  
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="!policy.valid&& policy.touched" class="help-block">Please enter policy!</span>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="matuityDate">Matuity Date</label>
+                   <input type="date" class="form-control" name="matuityDate" id="matuityDate" ngModel 
+                   #matuityDate="ngModel" required >  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span *ngIf="!matuityDate.valid&& matuityDate.touched" class="help-block">Please enter matuity Date!</span>
+        </div>
+              <div class="row">
+                  <div class="col-xs-12">
+                    <button
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="!signUpForm.valid" style="margin-right: 10px;margin-bottom: 10px;">Save</button>
+                  <button type="button" [disabled]="!signUpForm.valid" class="btn btn-danger" style="margin-right: 10px;margin-bottom: 10px;" (click)="onCancel()">Reset</button>
+                  </div>
+              </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+.side{
+background-color: aliceblue;
+}
+
+.sidebar-nav{
+    background-color: aliceblue;
+}
+
+.sidebar-menu{
+    width: 100%;
+    height: 40px;
+    margin: 2px;
+    margin-left: 10px;
+    padding : 0;
+    font-size: larger;
+    font-style: normal;
+    border-bottom: 1px solid gray;
+    color: black;
+}
+
+.sub-menu{
+    margin-left: 25px;
+    height : 30px;
+    padding : 0;
+    font-size: normal;
+    font-style: normal;
+    color:black;
+}

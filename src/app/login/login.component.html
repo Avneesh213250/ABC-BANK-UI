@@ -1,0 +1,36 @@
+<div class="row" style="padding-left: 150px;">
+    <div class="col-xs-6">
+        <form  (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="userid">UserId</label>
+                   <input type="number" class="form-control" name="userid" id="userid" ngModel 
+                   #userid="ngModel" required >  
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="!userid.valid&& userid.touched" class="help-block">Please enter username!</span>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                   <input type="password" class="form-control" name="password" id="password" ngModel 
+                   #password="ngModel" required >  
+                  </div>
+                </div>
+              </div>
+              <span *ngIf="!password.valid&& password.touched" class="help-block">Please enter password!</span>
+              <span *ngIf="loginMsg!=null" class="help-block">{{loginMsg}}</span>
+              <div class="row">
+                  <div class="col-xs-12">
+                    <button
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="!loginForm.valid" style="margin-right: 10px; margin-bottom: 10px;">Login</button>
+                  <button type="button" [disabled]="!loginForm.valid" class="btn btn-danger" (click)="onCancel()" style="margin-right: 10px; margin-bottom: 10px;">Cancel</button>
+                  </div>
+              </div>
+        </form>
+    </div>
+</div>

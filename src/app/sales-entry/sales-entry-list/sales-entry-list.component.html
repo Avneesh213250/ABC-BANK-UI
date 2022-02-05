@@ -1,0 +1,49 @@
+
+<p class="fa fa-bold" style="margin-left: 480px; font-size: large;">Sales Entry List</p>
+<div class="row">
+    <button class="btn btn-success" style="margin-left: 15px;" (click)="exportAsXLSX()">Export To Excel</button>
+    <div class="col-xs-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Sales Type </th>
+                  <th>Details</th>
+                  <th>Created Date</th>
+                  <th>Officer name</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                  </tr>
+                </thead>
+            <tbody *ngFor="let users of salesList; let i=index">
+                <tr>
+                    <td>{{users.customername}}</td>
+                    <td>{{users.salestype}}</td>
+                    <div *ngIf="users.salestype==='Insurence'&&users.salestype!==null">
+                       <td> <table class="table table-striped">
+                        <tr><td><b>Insurance </b></td><td>{{users.insurence.insurence}}</td></tr>
+                        <tr><td><b>Policy </b> </td><td>{{users.insurence.policy}}</td></tr>
+                        <tr><td><b>Maturity Date </b></td><td>{{users.insurence.matuityDate | date}}</td></tr>
+                        </table>
+                    </td>
+                    </div>
+                    <div *ngIf="users.salestype!=='Insurence'&&users.salestype!==null">
+                        <td> <table class="table table-striped">
+                            <tr><td><b>Cradit Card Number </b></td><td>{{users.creditCard.creditCardNum}} </td> </tr>
+                            <tr><td><b>Validity </b></td><td>{{users.creditCard.validity | date}}</td></tr>
+                        </table>
+                 </td>
+                    </div>
+                    <td>{{users.createdDate | date}}</td>
+                    <td>{{users.createdBy}}</td>
+                    <td><button class="btb btn-primary" (click)="onEdit(i)">Edit</button></td> 
+                    <td><button class="btb btn-danger" (click)="ondelete(i)">Delete</button></td>
+                    
+                </tr>
+                   
+                    
+                
+            </tbody>
+        </table>
+    </div>
+</div>

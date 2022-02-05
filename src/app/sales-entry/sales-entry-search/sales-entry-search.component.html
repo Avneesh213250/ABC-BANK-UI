@@ -1,0 +1,61 @@
+<p class="fa fa-bold" style="margin-left: 480px; font-size: large;">Sales Entry Search</p>
+<div class="row">
+
+    <form (ngSubmit)="onSubmit()" #getList="ngForm">
+    <div class="col-xs-12">
+        <label for="Sales Id" style="padding-right: 20px;">Sales Id</label>
+        
+        <input type="number" name="userid" id="userid" ngModel #userid="ngModel" >
+ 
+        <button type="submit" class="btn btn-primary"> Search</button>
+        <span class="help-block" *ngIf="msg!=null">Sales id dosen't exist!</span>
+    </div>
+</form>
+</div>
+
+<div class="row" *ngIf="sales!==null">
+    <div class="col-xs-12">
+        <table class="table table-bordered">
+            <thead >
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Sales Type </th>
+                   <th>Details</th>
+                  <th>Created Date</th>
+                  <th>Officer name</th>
+                  <th>Action</th>
+                  </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td>{{sales.customername}}</td>
+                    <td>{{sales.salestype}}</td>
+                   
+                    <div *ngIf="sales.salestype==='Insurence'&&sales.salestype!==null">
+                        <td> <table class="table table-striped">
+                            <tr><td><b>Insurance </b></td><td>{{sales.insurence.insurence}}</td></tr>
+                            <tr><td><b>Policy </b> </td><td>{{sales.insurence.policy}}</td></tr>
+                            <tr><td><b>Maturity Date </b></td><td>{{sales.insurence.matuityDate | date}}</td></tr>
+                         </table>
+                     </td>
+                     </div>
+                     <div *ngIf="sales.salestype!=='Insurence'&&sales.salestype!==null">
+                         <td> <table class="table table-striped">
+                            <tr><td><b>Cradit Card Number </b></td><td>{{sales.creditCard.creditCardNum}} </td> </tr>
+                            <tr><td><b>Validity </b></td><td>{{sales.creditCard.validity | date}}</td></tr>
+                         </table>
+                  </td>
+                     </div>
+                    <td>{{sales.createdDate | date}}</td>
+                    <td>{{sales.createdBy}}</td>
+                    <!-- <td><button class="btb btn-danger" (click)="onEdit()">Edit</button></td> -->
+                    <td><button class="btb btn-danger" (click)="ondeleteSales()">Delete</button></td>
+                </tr>
+                   
+                    
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+

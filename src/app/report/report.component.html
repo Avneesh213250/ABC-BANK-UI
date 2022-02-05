@@ -1,0 +1,80 @@
+<p class="fa fa-bold" style="margin-left: 480px; font-size: large;">Report</p>
+<div class="row">
+
+    <form (ngSubmit)="onSubmit()" #getList="ngForm">
+    <div class="col-xs-4">
+       
+        <div class="form-group">
+            <label for="customername">Branch ID</label>
+           <select type="text" class="form-control" name="branchid" id="branchid" ngModel 
+           #branchid="ngModel" required >  
+           <option value="">Selcet Branch</option>
+    <option value="Branch 1">Branch 1</option>
+    <option value="Branch 2">Branch 2</option>
+    <option value="Branch 3">Branch 3</option>
+    <option value="Branch 4">Branch 4</option>
+           </select>
+          </div>
+        </div>
+          <div class="col-xs-4">
+          <div class="form-group">
+            <label for="customername">Officer ID</label>
+           <select type="text" class="form-control" name="officerid" id="officerid" ngModel 
+           #officerid="ngModel" required >  
+           <option value="">Selcet Officer</option>
+    <option *ngFor="let item of officerList" [value]="item.userid">{{item.userid}}</option>
+           </select>
+          </div>
+          
+        </div>
+        <button [disabled]="!getList.valid" style="margin-top: 25px;" type="submit" class="btn btn-primary"> Search</button>
+        <span class="help-block" *ngIf="msg!==null">No record found!</span>
+    
+</form>
+</div>
+
+<div class="row" *ngIf="salesList!==null">
+    <div class="col-xs-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Sales Type </th>
+                  <th>Details</th>
+                  <th>Created Date</th>
+                  <th>Officer name</th>
+                
+                  </tr>
+                </thead>
+            <tbody *ngFor="let users of salesList; let i=index">
+                <tr>
+                    <td>{{users.customername}}</td>
+                    <td>{{users.salestype}}</td>
+                    <div *ngIf="users.salestype==='Insurence'&&users.salestype!==null">
+                       <td> <table class="table table-striped">
+                        <tr><td><b>Insurence </b></td><td>{{users.insurence.insurence}}</td></tr>
+                        <tr><td><b>Policy </b> </td><td>{{users.insurence.policy}}</td></tr>
+                        <tr><td><b>Maturity Date </b></td><td>{{users.insurence.matuityDate | date}}</td></tr>
+                        </table>
+                    </td>
+                    </div>
+                    <div *ngIf="users.salestype!=='Insurence'&&users.salestype!==null">
+                        <td> <table class="table table-striped">
+                            <tr><td><b>Cradit Card Number </b></td><td>{{users.creditCard.creditCardNum}} </td> </tr>
+                            <tr><td><b>Validity </b></td><td>{{users.creditCard.validity | date}}</td></tr>
+                        </table>
+                 </td>
+                    </div>
+                    <td>{{users.createdDate | date}}</td>
+                    <td>{{users.createdBy}}</td>
+                    <!-- <td><button class="btb btn-danger" (click)="onEdit(i)">Edit</button></td> -->
+                    <!-- <td><button class="btb btn-danger" (click)="ondelete()">Delete</button></td> -->
+                    
+                </tr>
+                   
+                    
+                
+            </tbody>
+        </table>
+    </div>
+</div>

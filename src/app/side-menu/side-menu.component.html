@@ -1,0 +1,71 @@
+<div id="sidebar-wrapper">
+    <nav id="menu_bank" class="col-md-12">
+        <div class="border-right">
+            <ul class="sidebar-nav nav">
+                <a class="sidebar-menu" routerLink="activity">
+                    <span class="fa fa-home solo">Activity</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="sub-menu">
+                    <a routerLink="createActivity"> Create Activity </a>
+                </ul>
+                <ul class="sub-menu">
+                    <a routerLink="searchActivity"> Search Activity </a>
+                </ul>
+                <ul class="sub-menu">
+                    <a routerLink="activityList"> Activity List </a>
+                </ul>
+                
+                    <a class="sidebar-menu" >
+                        <span class="fa fa-anchor solo">Sales Entry</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <a routerLink="salesEntry"> Create Sales Entry </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a routerLink="searchSales"> Search Sales Entry </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a routerLink="salesList"> Sales Entry List </a>
+                    </ul>
+                
+                <div *ngIf="admin==='true'">
+                <li>
+                    <a class="sidebar-menu " >
+                        <span class="fa fa-anchor solo">Report</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <a routerLink="report"> Sales report </a>
+                    </ul>
+                </li>
+                <li>
+                    <a class="sidebar-menu" routerLink="officer">
+                        <span class="fa fa-anchor solo">Officer</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <a routerLink="officer"> Add Officer </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a routerLink="officer"> Officer List</a>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="sidebar-menu" routerLink="branch">
+                        <span class="fa fa-anchor solo">Branch</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <a routerLink="branch"> Create Branch </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a routerLink="branch"> Update Branch </a>
+                    </ul>
+                    <ul class="sub-menu">
+                        <a routerLink="branch"> Branch List </a>
+                    </ul>
+                </li>
+                
+            </div>
+            </ul>
+        </div>
+    </nav>
+</div>

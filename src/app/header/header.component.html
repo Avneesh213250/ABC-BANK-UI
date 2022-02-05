@@ -1,0 +1,26 @@
+<div class="navbar navbar-default col-md-12">
+    
+        <nav class="navbar navbar-light bg-light border-bottom col-md-12">
+            <a class="navbar-brand" >
+              <img src="https://cdn2.vectorstock.com/i/1000x1000/67/66/bank-building-solid-icon-banking-house-vector-15106766.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+              ABC Bank
+            </a>
+            
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav navbar-center" style="padding-left: 500px;" >
+                    <div class="center"><h4>ABC Bank of India</h4></div>
+                   
+                </ul>
+                <div class="nav navbar-nav navbar-right"  *ngIf="username!=null">
+                    <p style="padding-left: 150px;">Welcome {{username}} </p>
+                    <a style="padding-left: 170px; padding-right: 10px; color: black;">Role: {{role}}</a><a style=" padding-right: 10px;" routerLink="home/chamgePass" title="Edit User" >Profile</a><a style="cursor: pointer; " (click)="logout()" title="Logout" >SignOut</a>
+                </div>
+                <div class="nav navbar-nav navbar-right" *ngIf="username===null" style="padding-right: 50px;">
+                    <a routerLink="login">Login</a>
+                    
+                </div>
+            </div>
+          </nav>
+       
+    
+</div>

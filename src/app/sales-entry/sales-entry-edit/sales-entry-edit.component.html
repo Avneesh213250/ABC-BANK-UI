@@ -1,0 +1,99 @@
+<button type="button" class="close" style="margin-right: 450px;" (click)="close()">Close</button>
+<div class="row">
+    <div class="col-xs-7">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="customername">Customer Name</label>
+               <input type="text" formControlName="customername" class="form-control" name="customername" id="customername"  
+                disabled>  
+               
+              </div>
+            </div>
+          </div>
+          <!-- <span *ngIf="!customername.valid&& customername.touched" class="help-block">Please enter customername!</span> -->
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="salestype">Sales Type</label>
+                   <input type="text" class="form-control" name="salestype" id="salestype"  
+                   formControlName="salestype" disabled>  
+                  </div>
+                </div>
+              </div>
+              <!-- <span *ngIf="!salestype.valid&& salestype.touched" class="help-block">Please enter sales_type!</span> -->
+            <div class="row" *ngIf="flag==='CreditCard'">
+                <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="creditCardNum">Credit Card Number</label>
+                   <input type="number" class="form-control" name="creditCardNum" minlength="16" id="creditCardNum"  
+                   formControlName="creditCardNum" required >  
+                  </div>
+                </div>
+              </div>
+              <!-- <span *ngIf="!creditCardNum.valid&& creditCardNum.touched&& creditCardNum.value<16" class="help-block">Please enter valid Credit Card!</span> -->
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="validity">Validity</label>
+                   <input type="date" class="form-control" name="validity" id="validity"  
+                   formControlName="validity" required >  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <span *ngIf="!validity.valid&& validity.touched" class="help-block">Please enter validity!</span> -->
+        </div>
+
+            <div class="row" *ngIf="flag==='Insurence'">
+                <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="insurence">Insurance</label>
+                   <input type="text" class="form-control" name="insurence" id="insurence"  
+                   formControlName="insurence" required > 
+                  </div>
+                </div>
+              </div>
+              <!-- <span *ngIf="!insurence.valid&& insurence.touched" class="help-block">Please enter insurence!</span> -->
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="policy">Policy</label>
+                   <input type="text" class="form-control" name="policy" id="policy"  
+                   formControlName="policy" required >  
+                  </div>
+                </div>
+              </div>
+              <!-- <span *ngIf="!policy.valid&& policy.touched" class="help-block">Please enter policy!</span> -->
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group">
+                    <label for="matuityDate">Maturity Date</label>
+                   <input type="date" class="form-control" name="matuityDate" id="matuityDate"  
+                   formControlName="matuityDate" required >  
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <span *ngIf="!matuityDate.valid&& matuityDate.touched" class="help-block">Please enter matuity Date!</span> -->
+        </div>
+              <div class="row">
+                  <div class="col-xs-12">
+                    <button
+                    type="submit"
+                    class="btn btn-success"
+                    [disabled]="!editForm.valid" style="margin-right: 10px;margin-bottom: 10px;">Update</button>
+                  <button type="button" [disabled]="!editForm.valid" class="btn btn-danger" style="margin-right: 10px;margin-bottom: 10px;" (click)="onCancel()">Reset</button>
+                  <span class="help-block" *ngIf="!editForm.valid && editForm.touched">Please enter valid data!</span>  
+                </div>
+              </div>
+        </form>
+    </div>
+</div>
+
+
